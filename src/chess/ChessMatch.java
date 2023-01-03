@@ -1,7 +1,6 @@
 package chess;
 
 import boardgame.Board;
-import boardgame.Position;
 import chess.pieces.King;
 import chess.pieces.RooK;
 
@@ -37,15 +36,21 @@ public class ChessMatch {
 	}
 	
 	
-	//metodo para colocar as peças no tabuleiro
+	//metodo para colocar as peças no tabuleiro atravé do metodo PlaceNewPiece
 	private void initialSetup() {
-		placeNewPiece('a' , 8 ,new RooK(board, Color.WHITE) );
-		placeNewPiece('d' , 8 ,new RooK(board, Color.WHITE) );
-		placeNewPiece('h' , 8 ,new King(board, Color.WHITE) );
-		
-		placeNewPiece('a', 1, new RooK(board, Color.BLACK));
-		placeNewPiece('h', 1, new RooK(board, Color.BLACK));
-		placeNewPiece('e', 3, new King(board, Color.BLACK));
+		placeNewPiece ( 'c' , 1 , new  RooK ( board , Color . WHITE ));
+        placeNewPiece ( 'c' , 2 , new  RooK ( board , Color . WHITE ));
+        placeNewPiece ( 'd' , 2 , new  RooK ( board , Color . WHITE ));
+        placeNewPiece ( 'e' , 2 , new  RooK ( board , Color . WHITE ));
+        placeNewPiece ( 'e' , 1 , new  RooK ( board , Color . WHITE ));
+        placeNewPiece ( 'd' , 1 , new  King ( board , Color . WHITE ));
+
+        placeNewPiece ( 'c' , 7 , new  RooK ( board , Color . BLACK ));
+        placeNewPiece ( 'c' , 8 , new  RooK ( board , Color . BLACK ));
+        placeNewPiece ( 'd' , 7 , new  RooK ( board , Color . BLACK ));
+        placeNewPiece ( 'e' , 7 , new  RooK ( board , Color . BLACK ));
+        placeNewPiece ( 'e' , 8 , new  RooK ( board , Color . BLACK ));
+        placeNewPiece ( 'd' , 8 , new  King ( board , Color . BLACK ));
 	}
 
 }
