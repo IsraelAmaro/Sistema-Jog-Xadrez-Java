@@ -30,15 +30,22 @@ public class ChessMatch {
 		return mat;
 	}
 	
+	//metodo que recebe as cordenadas do xadrez
+	
+	private void placeNewPiece(char column, int row, ChessPiece piece ) {
+		board.placePiece(piece,new ChessPosition(column, row).toPosition());
+	}
+	
+	
 	//metodo para colocar as peças no tabuleiro
 	private void initialSetup() {
-		board.placePiece(new RooK(board, Color.WHITE), new Position(0, 0));
-		board.placePiece(new RooK(board, Color.WHITE), new Position(0, 7));
-		board.placePiece(new King(board, Color.WHITE), new Position(0, 3));
+		placeNewPiece('a' , 8 ,new RooK(board, Color.WHITE) );
+		placeNewPiece('d' , 8 ,new RooK(board, Color.WHITE) );
+		placeNewPiece('h' , 8 ,new King(board, Color.WHITE) );
 		
-		board.placePiece(new RooK(board, Color.BLACK), new Position(7, 0));
-		board.placePiece(new RooK(board, Color.BLACK), new Position(7, 7));
-		board.placePiece(new King(board, Color.BLACK), new Position(7, 4));
+		placeNewPiece('a', 1, new RooK(board, Color.BLACK));
+		placeNewPiece('h', 1, new RooK(board, Color.BLACK));
+		placeNewPiece('e', 3, new King(board, Color.BLACK));
 	}
 
 }
