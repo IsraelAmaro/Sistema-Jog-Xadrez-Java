@@ -36,10 +36,9 @@ public class ChessPosition {
 	}
 	@Override
 	public String toString() {
-		return "" + column +  row ; 
+		return "" + column + row ; 
 		/* a String vazia no inicio da declaração de retorno, força o compilador 
 		a entender que é uma concatenação de Strings */
-	}
-	
+	}	
 	
 }
