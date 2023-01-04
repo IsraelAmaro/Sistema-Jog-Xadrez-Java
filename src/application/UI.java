@@ -3,6 +3,7 @@ package application;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.ChessPosition;
 import chess.Color;
@@ -53,6 +54,16 @@ public class UI {
 					+ "Valid values are from ai to h8");
 		}
 		
+	}
+	// metodo para imprimir o chessMatch
+	
+	public static void printMatch(ChessMatch chessmatch) {
+		
+		printBoard(chessmatch.getPieces());
+		System.out.println();
+		System.out.println("turn: " + chessmatch.getTurn());
+		System.out.println("Waiting player: " + chessmatch.getCurrentPlayer());
+				
 	}
 	
 	// metodo para imprimir o tabuleiro

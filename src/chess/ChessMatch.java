@@ -8,15 +8,27 @@ import chess.pieces.RooK;
 
 public class ChessMatch {
 	
+	private int turn;
+	private Color currentPlayer;
 	private Board board;
 	
 	public ChessMatch() {
 	
 		board = new Board(8, 8);
+		turn = 1;
+		currentPlayer = Color.WHITE;
 		initialSetup();
 	}
-	
-	public ChessPiece[][] getpieces(){
+		
+	public int getTurn() {
+		return turn;
+	}
+
+	public Color getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public ChessPiece[][] getPieces(){
 		ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
 		for(int i =0; i< board.getRows(); i++) {
 			for(int j = 0; j< board.getColumns();j++) {
@@ -43,11 +55,15 @@ public class ChessMatch {
 	//metodo para mover as peças
 	
 	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
+		
 		Position source = sourcePosition.toPosition();
 		Position target = targetPosition.toPosition();
 		validateSourcePosition(source); //operção para validar essa posição
 		validateTargetPosition(source,target);//operção para validar o destino dessa posição
 		Piece capturedPiece = makeMove(source, target);//operação responsavel por realizar o movimento da peça
+		
+		nextTurn();
+		
 		return (ChessPiece)capturedPiece;
 	}
 	
@@ -56,6 +72,10 @@ public class ChessMatch {
 		if(!board.thereIsAPiece(position)) {
 			
 			throw new ChessException("There is no piece on source position. ");
+		}
+		
+		if(currentPlayer != ((ChessPiece)board.piece(position)).getColor()) {
+			throw new ChessException("The chosen piece is not yours");
 		}
 		
 		if(!board.piece(position).isThereAnyPossibleMove()) {
@@ -78,7 +98,14 @@ public class ChessMatch {
 		board.placePiece(p, target);
 		return (ChessPiece) capturedPiece;
 	}
+	//metodo para troca da turno 
 	
+	private void nextTurn() {
+		turn ++;
+		
+		currentPlayer = (currentPlayer == Color.WHITE) ? Color.BLACK : Color.WHITE;
+		
+	}
 	
 	//metodo que recebe as cordenadas do xadrez
 	
