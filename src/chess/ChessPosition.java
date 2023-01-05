@@ -32,7 +32,7 @@ public class ChessPosition {
 	//metodo inverso ao anterior; Agora convertemos uma posição normal do tabuleiro (matriz) para uma ChessPosition 
 	
 	protected static ChessPosition fromPosition(Position position){
-		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow())	;	
+		return new ChessPosition((char)('a' + position.getColumn()), 8 - position.getRow())	;	
 	}
 	@Override
 	public String toString() {

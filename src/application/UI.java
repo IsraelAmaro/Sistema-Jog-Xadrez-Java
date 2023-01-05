@@ -60,14 +60,19 @@ public class UI {
 	}
 	// metodo para imprimir o chessMatch
 	
-	public static void printMatch(ChessMatch chessmatch, List<ChessPiece> captured) {
+	public static void printMatch(ChessMatch chessMatch, List<ChessPiece> captured) {
 		
-		printBoard(chessmatch.getPieces());
+		printBoard(chessMatch.getPieces());
 		System.out.println();
 		printcapturedPieces(captured);
 		System.out.println();
-		System.out.println("  turn: " + chessmatch.getTurn());
-		System.out.println("  Waiting player: " + chessmatch.getCurrentPlayer());
+		System.out.println("  turn: " + chessMatch.getTurn());
+		System.out.println("  Waiting player: " + chessMatch.getCurrentPlayer());
+		
+		//testando se a partida entrou em estado de check
+		if(chessMatch.getCheck()) {
+			System.out.println(" >>>> CHECK!!  <<<<");
+		}
 				
 	}
 	
