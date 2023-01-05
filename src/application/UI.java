@@ -51,12 +51,10 @@ public class UI {
 		int row = Integer.parseInt(s.substring(1)); //recortando a string recebida
 		return new ChessPosition(column, row);
 		}
-		catch(RuntimeException e) {
-			
+		catch(RuntimeException e) {			
 			throw new InputMismatchException("ERROR readin ChessPosition. "
 					+ "Valid values are from ai to h8");
-		}
-		
+		}		
 	}
 	// metodo para imprimir o chessMatch
 	
@@ -67,11 +65,19 @@ public class UI {
 		printcapturedPieces(captured);
 		System.out.println();
 		System.out.println("  turn: " + chessMatch.getTurn());
-		System.out.println("  Waiting player: " + chessMatch.getCurrentPlayer());
 		
-		//testando se a partida entrou em estado de check
-		if(chessMatch.getCheck()) {
-			System.out.println(" >>>> CHECK!!  <<<<");
+		if(!chessMatch.getCheckMate()) {			
+		System.out.println("  Waiting player: " + chessMatch.getCurrentPlayer());	
+		
+			//testando se a partida entrou em estado de check
+			if(!chessMatch.getCheck()) {
+				System.out.println("   >>>> CHECK!!  <<<<");
+			}
+		}
+		else {
+			
+			System.out.println("   >>>> #### CHECKMATE ####  <<<<");
+			System.out.println("Winner: " + chessMatch.getCurrentPlayer());		
 		}
 				
 	}
